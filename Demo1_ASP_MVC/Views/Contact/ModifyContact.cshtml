@@ -1,0 +1,82 @@
+﻿@model Demo1_ASP_MVC.Models.ViewModels.ContactVM.AddContactVM
+
+@using Microsoft.AspNetCore.Mvc.ModelBinding
+
+@{
+    var modelState = ViewContext.ModelState;
+    if(!modelState.IsValid){
+    <div class="container alert alert-danger">
+        <p>Il y a dans ce formulaire : @modelState.ErrorCount erreur(s)</p>
+        <dl>
+            @foreach (KeyValuePair<string, ModelStateEntry> errors in modelState)
+            {
+                @if(errors.Value.Errors.Count > 0){
+                    <dt>@errors.Key :</dt>
+                    <dd>
+                        <ul>
+                        @foreach (ModelError error in errors.Value.Errors)
+                        {
+                            <li>@error.ErrorMessage</li>
+                        }
+                        </ul>
+                    </dd>
+                }
+            }
+        </dl>
+    </div>
+    }
+}
+
+
+
+
+<div class="container">
+    <h1> Modifier un contact</h1>
+    <form asp-action="ModifyContact">
+
+           
+          <div class="form-group">
+                <label asp-for=FirstName></label>
+                <input type="text" class="form-control" id="" asp-for=FirstName >
+                <span asp-validation-for="FirstName" class="alert-danger"></span>
+          </div>
+
+          <div class="form-group">
+            <label asp-for=LastName></label>
+            <input type="text" class="form-control" id="" asp-for=LastName >
+            <span asp-validation-for="LastName" class="alert-danger"></span>
+          </div>
+
+          <div class="form-group">
+                <label asp-for=SurName></label>
+                <input type="text" class="form-control" id="" asp-for=SurName >
+                <span asp-validation-for="SurName" class="alert-danger"></span>
+          </div>
+
+          <div class="form-group">
+                <label asp-for=Email></label>
+                <input type="email" class="form-control" id="" asp-for=Email >
+                <span asp-validation-for="Email" class="alert-danger"></span>
+          </div>
+
+           <div class="form-group">
+                <label asp-for=Phone></label>
+                <input type="text" class="form-control" id="" asp-for=Phone >
+                <span asp-validation-for="Phone" class="alert-danger"></span>
+          </div>
+        
+          <div class="form-group">
+                <label asp-for=Birthdate></label>
+                <input type="date" class="form-control" id="" asp-for=Birthdate >
+                <span asp-validation-for="Birthdate" class="alert-danger"></span>
+          </div>
+            
+           <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">Modifier</button>
+                <a  class="btn btn-danger" asp-action="ListContact">Annuler</a>
+          </div>   
+
+         <p>@Html.ValidationSummary()</p>
+        
+    </form>
+</div>

@@ -1,0 +1,36 @@
+﻿@using Demo1_ASP_MVC.Models.ViewModels
+@using Demo1_ASP_MVC.Service
+@inject SessionManager _sessionManager
+@model UserRegisterViewModel
+@{
+    ViewData["Title"] = "Update";
+}
+
+
+
+<h2>@_sessionManager.FirstName modifiez votre profil</h2>
+<form asp-action="Update">
+     <div class="form-group">
+        <label class="control-label" asp-for="FirstName"></label>
+        <input class="form-control" asp-for="FirstName"  />
+        <span class="text-danger" asp-validation-for="FirstName"></span>
+    </div>
+     <div class="form-group">
+        <label class="control-label" asp-for="LastName"></label>
+        <input class="form-control" asp-for="LastName" />
+        <span class="text-danger" asp-validation-for="LastName"></span>
+    </div>
+     <div class="form-group">
+        <label class="control-label" asp-for="Birthdate"></label>
+        <input class="form-control" asp-for="Birthdate" />
+        <span class="text-danger" asp-validation-for="Birthdate"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label" asp-for="Email"></label>
+        <input class="form-control" asp-for="Email"  />
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+    <br />
+    <input class="btn btn-primary" type="submit" value="Modifiez" />
+      <a  class="btn btn-danger" asp-action="Index" asp-controller ="Home">Annuler</a>
+</form>

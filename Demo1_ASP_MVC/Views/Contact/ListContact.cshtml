@@ -1,0 +1,58 @@
+﻿@using Demo1_ASP_MVC.Models.ContactModels
+
+@model Demo1_ASP_MVC.Models.ViewModels.ContactVM.ListContactVM
+
+<div class="container  row">
+    <div class ="col-9 text-center ">
+        <h1>Liste des contacts</h1>
+
+        <a 
+            class="btn btn-primary"
+            asp-action="AddContact">
+            Ajouter
+        </a>
+
+
+        @if (@Model.NbContact > 0)
+        {
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Surnom</th>
+                        <th>Tel</th>
+                        <th>Email</th>
+                        <th>Date de naissance</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                   @foreach (Contact c in Model.Contacts)
+                    {
+                        <tr>
+                            <td>@c.LastName</td>
+                            <td>@c.FirstName</td>
+                            <td>@(c.SurName == null ? "Pas de surnom 😭" : c.SurName)</td>
+                            <td>@c.Phone</td>
+                            <td>@c.Email</td>
+                            <td>@(c.Birthdate == null ? "Inconnue" : c.Birthdate.ToString())</td>
+                       
+                            <td>
+                                <a class="btn btn-secondary" asp-controller="Contact" asp-action="ModifyContact" asp-route-id="@c.Id">✏ Modifier</a>
+                                <a class="btn btn-danger" asp-controller="Contact" asp-action="DeleteContact" asp-route-id="@c.Id">🗑 Supprimer</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        }
+
+
+        
+    </div>
+</div>

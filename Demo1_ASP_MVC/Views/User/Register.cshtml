@@ -1,0 +1,44 @@
+﻿@using Demo1_ASP_MVC.Models.ViewModels
+@model UserRegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+
+<h2>S'enregister</h2>
+<form asp-action="Register">
+     <div class="form-group">
+        <label class="control-label" asp-for="FirstName"></label>
+        <input class="form-control" asp-for="FirstName" />
+        <span class="text-danger" asp-validation-for="FirstName"></span>
+    </div>
+     <div class="form-group">
+        <label class="control-label" asp-for="LastName"></label>
+        <input class="form-control" asp-for="LastName" />
+        <span class="text-danger" asp-validation-for="LastName"></span>
+    </div>
+     <div class="form-group">
+        <label class="control-label" asp-for="Birthdate"></label>
+        <input class="form-control" asp-for="Birthdate" />
+        <span class="text-danger" asp-validation-for="Birthdate"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label" asp-for="Email"></label>
+        <input class="form-control" asp-for="Email" />
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label" asp-for="Password"></label>
+        <input class="form-control" asp-for="Password" />
+        <span class="text-danger" asp-validation-for="Password"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label" asp-for="ConfirmPassword"></label>
+        <input class="form-control" asp-for="ConfirmPassword" />
+        <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Créer mon compte" />
+</form>
+
+
