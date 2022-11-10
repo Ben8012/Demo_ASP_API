@@ -1,0 +1,50 @@
+﻿@using Demo1_ASP_MVC.Models.PokemonModels
+
+@model Demo1_ASP_MVC.Models.ViewModels.PokemonVM.ListPokemonVM
+
+<div class="container  row">
+    <div class ="col-9 text-center ">
+        <h1>Liste des pokemons</h1>
+
+        <a 
+            class="btn btn-primary"
+            asp-action="Insert">
+            Ajouter
+        </a>
+
+
+        @if (@Model.NbPokemons > 0)
+        {
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom francais</th>
+                        <th>Nom anglais</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                   @foreach (Pokemon p in Model.Pokemons)
+                    {
+                        <tr>
+                            <td>@p.FrenchName</td>
+                            <td>@p.EnglishName</td>
+                           
+                       
+                            <td>
+                                <a class="btn btn-secondary" asp-action="Update" asp-route-id="@p.Id">✏ Modifier</a>
+                                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@p.Id">🗑 Supprimer</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        }
+
+
+        
+    </div>
+</div>

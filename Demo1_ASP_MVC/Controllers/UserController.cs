@@ -92,11 +92,10 @@ namespace Demo1_ASP_MVC.Controllers
 
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(BASEAPI);
-            var reponse = await client.PutAsJsonAsync($"User/Update/{(int)_sessionManager.Id}", userToUpdate);
+            var reponse = await client.PutAsJsonAsync($"User/Update/{_sessionManager.Id}", userToUpdate);
             if (reponse.IsSuccessStatusCode)
             {
                 user = await reponse.Content.ReadFromJsonAsync<User>();
-
             }
 
             AddUserToSession(user);

@@ -1,0 +1,53 @@
+﻿@model Demo1_ASP_MVC.Models.ViewModels.PokemonVM.InsertPokemonVM
+
+@using Microsoft.AspNetCore.Mvc.ModelBinding
+
+@{
+    var modelState = ViewContext.ModelState;
+    if(!modelState.IsValid){
+    <div class="container alert alert-danger">
+        <p>Il y a dans ce formulaire : @modelState.ErrorCount erreur(s)</p>
+        <dl>
+            @foreach (KeyValuePair<string, ModelStateEntry> errors in modelState)
+            {
+                @if(errors.Value.Errors.Count > 0){
+                    <dt>@errors.Key :</dt>
+                    <dd>
+                        <ul>
+                        @foreach (ModelError error in errors.Value.Errors)
+                        {
+                            <li>@error.ErrorMessage</li>
+                        }
+                        </ul>
+                    </dd>
+                }
+            }
+        </dl>
+    </div>
+    }
+}
+
+<div class="container">
+     <h1> Ajouter un contact</h1>
+    <form asp-action="Insert">
+
+          <div class="form-group">
+            <label asp-for=FrenchName></label>
+            <input type="text" class="form-control" id="" asp-for=FrenchName >
+            <span asp-validation-for=FrenchName class="alert-danger"></span>
+          </div>
+
+          <div class="form-group">
+            <label asp-for=EnglishName></label>
+            <input type="text" class="form-control" id="" asp-for=EnglishName >
+            <span asp-validation-for=EnglishName class="alert-danger"></span>
+          </div>
+
+          <br />
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+            <a  class="btn btn-danger" asp-action="ListPokemon">Annuler</a>
+
+          </div>   
+    </form>
+</div>

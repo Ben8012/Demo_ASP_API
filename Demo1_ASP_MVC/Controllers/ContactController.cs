@@ -67,7 +67,7 @@ namespace Demo1_ASP_MVC.Controllers
 
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(BASEAPI);
-            var reponse = await client.GetAsync($"Contact/GetAll/{_sessionManager}");
+            var reponse = await client.GetAsync($"Contact/GetAll");
             if (reponse.IsSuccessStatusCode)
             {
                 contacts = await reponse.Content.ReadFromJsonAsync<List<Contact>>();

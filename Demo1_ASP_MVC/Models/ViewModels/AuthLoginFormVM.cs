@@ -9,6 +9,7 @@ namespace Demo1_ASP_MVC.Models.ViewModels
         [Required(ErrorMessage = "Le nom d'utilisateur est obligatoire")]
         [MinLength(2, ErrorMessage = "Le nom d'utilisateur n'a pas assez de caractères")]
         [MaxLength(16, ErrorMessage = "Le nom d'utilisateur a trop de caractères")]
+        [EmailAddress]
         public string Email { get; set;}
 
         [Display(Name = "Mot de passe")]
